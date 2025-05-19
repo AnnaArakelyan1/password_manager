@@ -40,3 +40,8 @@ class PasswordStorage:
         c = self.conn.cursor()
         c.execute("DELETE FROM passwords WHERE id = ?", (entry_id,))
         self.conn.commit()
+
+    def update_password(self, entry_id, new_encrypted_password):
+     c = self.conn.cursor()
+     c.execute("UPDATE passwords SET password = ? WHERE id = ?", (new_encrypted_password, entry_id))
+     self.conn.commit()
